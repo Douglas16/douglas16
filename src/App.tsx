@@ -16,7 +16,8 @@ import {
   Settings, 
   ChevronRight,
   Terminal,
-  Printer
+  Printer,
+  MessageCircle
 } from "lucide-react";
 
 const SectionTitle = ({ children }: { children: React.ReactNode }) => (
@@ -84,7 +85,7 @@ const EducationItem = ({ degree, school, year, location }: EducationProps) => (
 );
 
 const SkillTag = ({ name }: { name: string; key?: React.Key }) => (
-  <span className="inline-block px-3 py-1.5 bg-white border border-line text-[11px] uppercase tracking-wider text-ink/70 rounded-sm">
+  <span className="inline-block px-2.5 py-1 bg-white border border-line text-[10px] tracking-wide text-ink/80 rounded-sm italic font-display">
     {name}
   </span>
 );
@@ -97,12 +98,12 @@ export default function App() {
       period: "05/2019 - 09/2025",
       location: "Cascavel, PR",
       bullets: [
-        "Liderei a transição integral dos sistemas ERP, WMS e Força de Vendas, coordenando o treinamento de equipes e representantes garantindo a continuidade das operações.",
-        "Estruturei o ecosistema de TI alinhando processos e tecnologias sob uma visão de negócio, posicionando a área como pilar estratégico.",
-        "Implementei processos de auditoria digital e cruzamento de dados, transformando informações fiscais/contábeis em recuperação de créditos e benefícios financeiros.",
-        "Direcionamento de normas de governança e adequação à LGPD, garantindo operações mais seguras, éticas e em conformidade com a legislação vigente.",
-        "Planejamos a cultura de dados e soluções de Business Intelligence (BI) para suporte à tomada de decisão.",
-        "Projetei e implementei ambientes de alta disponibilidade baseados em virtualização, otimizando recursos de hardware para suportar a escalabilidade comercial e a continuidade do negócio."
+        "Liderei a implantação do ERP Sênior, capacitando as equipes e garantindo a continuidade das operações sem impacto significativo ao negócio.",
+        "Estruturei o ecossistema de TI com foco em governança, segurança da informação e processos ágeis alinhados aos objetivos de negócio.",
+        "Automatizei o cruzamento de dados fiscais e contábeis via auditoria digital, resultando em recuperação direta de créditos e benefícios financeiros.",
+        "Atuei na integração e implantação de sistemas de logística (WMS) e Força de Vendas.",
+        "Tratei e modelei dados estratégicos da operação, criando bases otimizadas para o consumo de ferramentas de análise.",
+        "Projetei infraestrutura virtualizada de alta disponibilidade, otimizando recursos de hardware para suportar a escalabilidade comercial da empresa."
       ]
     },
     {
@@ -111,9 +112,9 @@ export default function App() {
       period: "01/2015 - 04/2019",
       location: "Cascavel, PR",
       bullets: [
-        "Estruturei a otimização de 2 sistemas WMS/TMS, aumentando a eficiência operacional em 30% no Grupo Huber.",
-        "Liderei a troca do Força de Vendas, ajustando processos e capacitando a usabilidade dos representantes comerciais.",
-        "Colaborei na auditoria de dados junto a consultorias. Fortaleci a governança e a confiabilidade das informações para decisões seguras."
+        "Otimizei a operação dos sistemas logísticos (WMS e TMS) no Grupo Huber, elevando a eficiência do setor em 30%.",
+        "Liderei a migração do sistema de Força de Vendas, reestruturando processos e capacitando as equipes comerciais.",
+        "Atuei na auditoria de dados corporativos em parceria com consultorias, garantindo governança e alta confiabilidade às informações para tomada de decisão."
       ]
     }
       ,
@@ -123,9 +124,9 @@ export default function App() {
       period: "01/2012 - 10/2014",
       location: "Cascavel, PR",
       bullets: [
-        "Coordenei a implantação e a customização do ERP para as particularidades do transporte rodoviário, otimizando processos logísticos, fiscais e operacionais específicos do segmento.",
-        "Assegurei a alta disponibilidade do sistema e do servidor local, garantindo a estabilidade das operações 24/7",
-        "Implementei o controle rigoroso de custos operacionais (combustível, pneus e manutenção), transformando dados em indicadores de economia."
+        "Coordenei a implantação e customização de ERP para o setor de transporte rodoviário, otimizando fluxos logísticos, operacionais e fiscais.",
+        "Geri a infraestrutura de TI e servidores locais (on-premise), assegurando alta disponibilidade e a estabilidade das operações 24/7.",
+        "Aprimorei o controle de custos operacionais da frota (combustível, manutenção e pneus), convertendo dados brutos em indicadores estratégicos para redução de despesas."
         
       ]
     }
@@ -159,14 +160,45 @@ export default function App() {
     }
   ];
 
-  const skills = ["Programação", "Redes", "Arquitetura", "DevOps", "Regras de Negócio", "SQL", "LLM Automações"];
+  const skillGroups = [
+    {
+      category: "Arquitetura & Desenvolvimento",
+      items: [
+        "Backend (Python, Java, Node.js)",
+        "Frontend (React, Next.js, TS)",
+        "Integração de APIs"
+      ]
+    },
+    {
+      category: "Dados & Infraestrutura",
+      items: [
+        "Dados e SQL (Oracle, Postgres)",
+        "DevOps, CI/CD e Cloudflare AWS",
+        "Redes, Linux e Windows (VM)",
+        "Antenas e Coletores de Dados"
+      ]
+    },
+    {
+      category: "Regras de Negócio & Automação",
+      items: [
+        "Regras de Negócios Complexas",
+        "Migração de Sistemas (ERP, WMS, FV)",
+        "Auditoria Fiscal (Sped) e Automação",
+        "Fluxos Logísticos e Frotas"
+      ]
+    },
+    {
+      category: "Inteligência Artificial Aplicada",
+      items: [
+        "Automação com python e IA",
+        "Desenvolvimento de Agentes"
+        
+      ]
+    }
+  ];
 
   const courses = [
-    { name: "Desenvolvimento Sistemas", details: "Diversas linguagens de Programação, python, javascript e java." },
-    { name: "Gestão de Pessoas e Cultura de Feedback", details: "Liderança e desenvolvimento de equipes." },
-    { name: "Inteligência Emocional - PDI", details: "Autodesenvolvimento, autogestão e comunicação assertiva." },
-    { name: "Data Science & Analytics SQL", details: "Análise avançada de dados e modelagem SQL." },
-    { name: "Regras de Negócio", details: "Contabilidade, fiscal, logística, comercial, compras, pcp e financeiro." }
+    
   ];
 
   return (
@@ -207,7 +239,7 @@ export default function App() {
             {/* Bio */}
             <section>
               <p className="text-2xl md:text-3xl font-display leading-relaxed text-ink/90 max-w-2xl">
-                Transformar tecnologia em resultados reais ao negócio.
+                Visão de negócio aliada à execução tecnológica.
               </p>
             </section>
 
@@ -242,24 +274,37 @@ export default function App() {
                   <a href="mailto:douglas.salvador@gmail.com" className="block text-sm hover:text-accent transition-colors border-b border-transparent hover:border-accent w-fit pb-1">
                     douglas.salvador@gmail.com
                   </a>
+                  <a href="https://wa.me/5545991259774" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-accent transition-colors border-b border-transparent hover:border-accent w-fit pb-1">
+                    <MessageCircle size={14} /> (45) 99125-9774
+                  </a>
                   
                   <p className="text-sm text-ink/60 pt-2">Cascavel, PR</p>
                 </div>
               </div>
 
-              {/* Tech Stack */}
+              {/* Skills & Specialties */}
               <div className="mb-12">
-                <h4 className="text-[10px] uppercase tracking-[3px] font-bold text-accent mb-6">Habilidades</h4>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill, idx) => (
-                    <SkillTag key={idx} name={skill} />
+                <h4 className="text-[10px] uppercase tracking-[3px] font-bold text-accent mb-6">Habilidades / Especialidades</h4>
+                <div className="space-y-8">
+                  {skillGroups.map((group, idx) => (
+                    <div key={idx}>
+                      <h5 className="text-[11px] font-bold text-ink uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+                        {group.category}
+                      </h5>
+                      <div className="flex flex-wrap gap-1.5">
+                        {group.items.map((item, sIdx) => (
+                          <SkillTag key={sIdx} name={item} />
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
 
               {/* Courses */}
               <div>
-                <h4 className="text-[10px] uppercase tracking-[3px] font-bold text-accent mb-6">Treinamento</h4>
+                <h4 className="text-[10px] uppercase tracking-[3px] font-bold text-accent mb-6"></h4>
                 <div className="space-y-6">
                   {courses.map((course, idx) => (
                     <div key={idx}>
@@ -278,8 +323,9 @@ export default function App() {
               href="mailto:douglas.salvador@gmail.com"
               className="bg-ink text-bg px-10 py-5 text-[11px] uppercase tracking-[3px] font-bold hover:bg-accent transition-colors w-full md:w-auto text-center"
             >
-              Entrar em Contato
+              Enviar E-mail
             </a>
+            
             <button 
               type="button"
               onClick={() => {
